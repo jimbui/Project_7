@@ -6,14 +6,13 @@ class Seat
 {
 private:
 	string seat_row_name;
+	string seat_section_name;
 	int seat_number;
-	bool sold;
 
 public:
-	Seat(string Row_Name,
-		int Seat_Number);
+	Seat(string Row_Name, int Seat_Number, string Seat_Section_Name);
 
-	void Sell();
+	//void Sell();
 	void Display() const;
 };
 
