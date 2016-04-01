@@ -28,10 +28,7 @@ public:
 	int Capacity() const;     // Number of seats
 
 	void Display() const;
-	void Display_All() const;
-
-	// Saved for later
-	// void Assign_Seats_To_Sections() const;
+	/*void Display_All() const;*/
 
 	int Number_of_Seat_Rows() const
 	{
@@ -42,8 +39,7 @@ public:
 	{
 		return seat_rows[index];
 	}
-
-
-
 };
+
+
 
