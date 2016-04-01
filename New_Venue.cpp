@@ -24,37 +24,28 @@ void New_Venue::Add_Seat_Section(const Seat_Section* seat_section)
 
 void New_Venue::Display() const
 {
-	cout << name << endl;
-	address->Display();
-	seat_sec[0]->Display();
-	/*for (int i = 0; i < number_of_seat_rows; ++i)
-	{
-	const Seat_Row* row = seat_rows[i];
-	row->Display();
-	}*/
+	// Displays each seat row without row name
 }
 
-void New_Venue::Display_All() const
-{
-	cout << name << endl;
-	address->Display();
 
-	for (int i = 0; i < number_of_seat_rows; i++)
-		seat_rows[i]->Display();
-
-	cout << endl << endl;
-
-	cout << "Seating sections:  " << endl;
-
-	for (int i = 0; i < number_of_seat_sections; i++)
-	{
-		seat_sec[i]->Display();
-		cout << endl;
-	}
-
-	// seat_sec[0]->Display();
-
-}
+//void New_Venue::Display_All() const
+//{
+//	cout << name << endl;
+//	address->Display();
+//
+//	for (int i = 0; i < number_of_seat_rows; i++)
+//		seat_rows[i]->Display();
+//
+//	cout << endl << endl;
+//
+//	cout << "Seating sections:  " << endl;
+//
+//	for (int i = 0; i < number_of_seat_sections; i++)
+//	{
+//		seat_sec[i]->Display();
+//		cout << endl;
+//	}
+//}
 
 // Return number of seats
 int New_Venue::Capacity() const
@@ -66,19 +57,3 @@ int New_Venue::Capacity() const
 	}
 	return count;
 }
-
-// Saved for later
-
-//void New_Venue::Assign_Seats_To_Sections() const
-//{
-//	// Iterates through each seat section
-//	for (int i = 0; i < number_of_seat_sections; i++)
-//	{
-//		// Iterates through each row in each seat section
-//		for (int j = 0; j < seat_sec[i]->Get_Row_Count(); j++)
-//		{
-//			string checked_row_name = seat_sec[i]->Get_Row_Element(j);
-//		}
-//	}
-//}
-
