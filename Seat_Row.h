@@ -9,7 +9,7 @@ public:
 private:
 	string row_name;
 	string section_name;
-	/*const*/ Seat* seats[MAX_SEATS_PER_ROW];
+	Seat* seats[MAX_SEATS_PER_ROW];
 	int  number_of_seats;
 
 public:
@@ -18,11 +18,15 @@ public:
 	string Section() const { return section_name; };
 	void Add_Seat(/*const*/ Seat* new_seat);
 	void Display() const;
-	//Sort_Seats();
+	//void Sort_Seats() const;
 	//Comparison();
 
 	int Number_of_Seats() const { return number_of_seats; }
 
+	bool operator>(const Seat& other) ;
+
 	/*const*/ Seat* Get_Seat(int idx) const { return seats[idx]; };
 };
+
+ostream& operator<<(ostream& os, const Seat& seats);
 
