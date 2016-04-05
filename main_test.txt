@@ -1,5 +1,5 @@
   //----------------------------------------------------------
-   // TEST CODE
+   // TEST CODE --> Add this to the main method to test seat sorting in Seat_Section
    //----------------------------------------------------------
    cout << "==============================" << endl;
    cout << "Test Seat Sort in Seat_Section" << endl;
