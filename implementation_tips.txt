@@ -50,8 +50,8 @@
 
    // Creates new sections, but DOES NOT ADD SEATS.  After completion of this loop,
    // there will be as many seat_sections as there are different section_names in
-   // the seats.
-   for (int i = 0; i < row_count; i++)
+   // all of the seat arrays.
+   for (int i = 0; i < row_count; i++) // Iterates through all of the seat_rows
    {
 	   // Iterates through all seats
 	   for (int j = 0; j < sr[i]->Number_of_Seats(); j++)
@@ -61,6 +61,7 @@
 		   if (current_section != new_section_name)
 		   {
 			   bool add_new_section = true;
+			   current_section = new_section_name;
 
 			   // Checks to see if there is a section with the requested name
 			   // already in existence.
