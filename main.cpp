@@ -10,7 +10,9 @@
 
 using namespace std ;
 
-Address* Create_Address(TiXmlNode* venue_node) // takes in a node and extracts address.
+int number_of_seats = 0 ;
+
+Address* Create_Address(TiXmlNode* venue_node) // takes in a node and extracts the address.
 {
    string street_address = venue_node->FirstChild()->NextSibling()->FirstChild()->FirstChild()->Value() ; // value of street.
    string city = venue_node->FirstChild()->NextSibling()->FirstChild()->NextSibling()->FirstChild()->Value() ; // ^
@@ -24,7 +26,7 @@ Address* Create_Address(TiXmlNode* venue_node) // takes in a node and extracts a
    return adr ;
 }
 
-Address* Create_Address() // address making.
+Address* Create_Address() // original.
 {
    string street_address;
    string city;
@@ -52,7 +54,7 @@ Address* Create_Address() // address making.
    return adr;
 }
 
-New_Venue* Venue()
+New_Venue* Venue() // original.
 {
    string venue_name;
 
@@ -166,10 +168,41 @@ New_Venue* Create_Venue(TiXmlNode* venue_node)
    return new_venue;
 }
 
+Seat* Get_Seat_Array(TiXmlNode* venue_node) // this will return an array of all seats.
+{
+   int i = 0 ;
+   static Seat seat_array[1000] ;
+
+   TiXmlNode* seat_row_node = venue_node->FirstChild()->NextSibling()->NextSibling() ;
+   assert(seat_row_node != 0) ;
+
+   while (seat_row_node != 0) // iterates through all rows.
+   {
+      TiXmlNode* name_node = seat_row_node->FirstChild("name") ;
+      assert(name_node != 0) ;
+      TiXmlNode* seat_node = seat_row_node->FirstChild("seat") ;
+
+      while (seat_node != 0) // iterates through all seats in this row.
+      {
+         TiXmlNode* number_node = seat_node->FirstChild("number");
+         TiXmlNode* section_node = seat_node->FirstChild("section");
+         seat_node = seat_node->NextSibling() ;
+
+         seat_array[i] = Seat(name_node->FirstChild()->Value() , std::stoi(number_node->FirstChild()->Value()) , section_node->FirstChild()->Value()) ;
+
+         number_of_seats++ ;
+         i++ ;
+      }
+
+      seat_row_node = seat_row_node->NextSibling();
+   }
+
+   return seat_array ;
+}
+
 int main()
 {
    std::cout << "testing the XML stuff." << " \n\n" ;
-
    string filename = "Venue.xml" ; // test file.
 
    // loading file and creating first node venue_node.
@@ -181,55 +214,25 @@ int main()
    {
       std::cout << "Could not load file " << filename << "." << " \n" ;
       cout << "Error = \"" << doc.ErrorDesc() << "\".  Exiting." << " \n" ;
-
-      cin.get() ;
-      exit(1) ;
+      cin.get() ; exit(1) ;
    }
 
-   std::cout << "file " << filename << " read in." << " \n" ;
-
+   std::cout << "file " << filename << " read in." << " \n\n" ;
    TiXmlNode* venue_node = doc.FirstChild("venue_file")->FirstChild() ; 
-   
-   // Venue_From_Xml::Get_Venue(venue_node) ;
 
-   std::cout << " \n\n" ;
+   // New_Venue* venue = Create_Venue(venue_node) ;
+   // venue->Display() ; // does nothing for now.
 
-   New_Venue* venue = Create_Venue(venue_node) ;
+   Seat* p = Get_Seat_Array(venue_node) ;
 
-   venue->Display() ; // does nothing for now.
-   
-   std::cout << " \n" ;
-   std::cout << "end program." << " \n\n" ;
+   std::cout << "displaying array." << " \n\n" ;
+
+   for (int i = 0 ; i < number_of_seats ; i++)
+   {
+      p->Display() ;
+      std::cout << " \n" ;
+      p++ ;
+   }
+
+   std::cout << " \n" << "end program." << " \n\n" ;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   /*
-
-   cout << "
-   New_Venue program." << " \n" ;
-   cout << "Please enter venue information." << " \n\n" ;
-
-   New_Venue* venue = Venue() ;
-
-   cout << " \n" ;
-
-   venue->Display();
-
-   cin.get();
-
-   */
