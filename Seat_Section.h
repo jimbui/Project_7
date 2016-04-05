@@ -38,6 +38,7 @@ class Seat_Section
 
    // Add seats from a specific row to a seat section
    void Add_Seats_From_Row(const Seat_Row& seat_row, int First_Seat, int Last_Seat);
+   void Add_Seats_From_Row(const Seat_Row& seat_row); // This method checks seat section of seats to be added.
 
    // Adds one seat to a seat section
    void Add_Seat(Seat* New_Seat);

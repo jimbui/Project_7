@@ -77,6 +77,24 @@ void Seat_Section::Add_Seats_From_Row(const Seat_Row& seat_row, int First_Seat, 
 	}
 }
 
+// Iterates through each seat on the seat row and assigns the seat pointers to 
+// the seat section's seat pointer array.  In order to figure out which seats from the row to add,
+// the method checks the section_name of each seat. An implementation suggestion may be found in
+// main_test.txt.
+void Seat_Section::Add_Seats_From_Row(const Seat_Row& seat_row)
+{
+	for (int i = 0; i < seat_row.Number_of_Seats(); i++)
+	{
+		Seat* current_seat = seat_row.Get_Seat(i);
+
+		if (current_seat->SEAT_SECTION() == section_name)
+		{
+			seat[seat_count] = current_seat;
+			seat_count++;
+		}
+	}
+}
+
 // Adds only 1 seat to the seat row
 void Seat_Section::Add_Seat(Seat* New_Seat)
 {
