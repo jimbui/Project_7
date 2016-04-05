@@ -11,6 +11,7 @@ private:
 
 public:
 	Seat(string Row_Name, int Seat_Number, string Seat_Section_Name);
+   Seat(){} ;
 
 	string SEAT_NAME() const { return seat_row_name; };
 	string SEAT_SECTION() const { return seat_section_name; };
@@ -18,6 +19,4 @@ public:
 
 	//void Sell();
 	void Display() const;
-};
-
-
+}; 
