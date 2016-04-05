@@ -6,7 +6,6 @@ using namespace std;
 
 Seat_Row::Seat_Row(const string& Row_Name, int Number_Of_Seats, const string& Section_Name) :
 	row_name(Row_Name),
-	section_name(Section_Name),
 	number_of_seats(0)
 {
 	for (int i = 0; i < Number_Of_Seats; i++)
@@ -15,14 +14,14 @@ Seat_Row::Seat_Row(const string& Row_Name, int Number_Of_Seats, const string& Se
 	}
 }
 
-bool Seat_Row::operator>(const Seat& other) 
+bool Seat_Row::operator>(const Seat_Row& other) 
 {
-		if (this->row_name == other.SEAT_NAME()) 
+		if (this->row_name == other.Name()) 
 		{ 
-			return this->number_of_seats > other.SEAT_NUM(); 
+			return this->number_of_seats > other.Number_of_Seats(); 
 		} 
 
-		return this->row_name > other.SEAT_NAME(); 
+		return this->row_name > other.Name(); 
 	
 }
 
@@ -34,7 +33,7 @@ void Seat_Row::Add_Seat(/*const*/ Seat* new_seat)
 
 void Seat_Row::Display() const
 {
-	cout << "Row " << row_name << " Seats " << "1-" << number_of_seats << " Section "<< section_name << endl;
+	cout << "Row " << row_name << " Seats " << "1-" << number_of_seats <<  endl;
 
 	//for (int i = 0; i < number_of_seats; ++i)
 	//{

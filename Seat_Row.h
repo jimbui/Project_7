@@ -8,14 +8,12 @@ public:
 
 private:
 	string row_name;
-	string section_name;
 	Seat* seats[MAX_SEATS_PER_ROW];
 	int  number_of_seats;
 
 public:
-	Seat_Row(const string& Row_Name, int Number_Of_Seats, const string& Section_Name);
+	Seat_Row(const string& Row_Name, int Number_Of_Seats, const string& Seat_Section);
 	string Name() const { return row_name; };
-	string Section() const { return section_name; };
 	void Add_Seat(/*const*/ Seat* new_seat);
 	void Display() const;
 	//void Sort_Seats() const;
@@ -23,10 +21,10 @@ public:
 
 	int Number_of_Seats() const { return number_of_seats; }
 
-	bool operator>(const Seat& other) ;
+	bool operator>(const Seat_Row& other) ;
 
 	/*const*/ Seat* Get_Seat(int idx) const { return seats[idx]; };
 };
 
-ostream& operator<<(ostream& os, const Seat& seats);
+//ostream& operator<<(ostream& os, const Seat_Row& seat);
 

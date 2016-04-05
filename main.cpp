@@ -156,7 +156,7 @@ New_Venue* Venue()
 	   cout << " \n";
 
 	   // Create new row and assign it to venue
-	   new_venue->Add_Seat_Row(new Seat_Row(row_name, seat_count));
+	   new_venue->Add_Seat_Row(new Seat_Row(row_name, seat_count, "section")); //Change this!!!!!!
 
 	   // Clean the input buffer
 	   while (cin.get() != '\n');
@@ -234,7 +234,7 @@ int main()
 
    cout << " \n" ;
 
-   venue->Display_All();
+   venue->Display();
 
    cin.get();
 }
