@@ -234,7 +234,7 @@ int main()
       p++ ;
    }
 
-   std::cout << "end program." << " \n\n" ;
+   std::cout << " \n" << "end program." << " \n\n" ;
 }
 
 
