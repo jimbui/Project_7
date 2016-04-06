@@ -1,7 +1,7 @@
 #pragma once
 #include "tinyxml.h"
 
-static class Venue_From_Xml			//NEVER INSTANTIATE STATIC class
+class Venue_From_Xml			
 {
 public:
 	static void Get_Venue(TiXmlNode* venue_node);
