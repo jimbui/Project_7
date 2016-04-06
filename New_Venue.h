@@ -28,7 +28,6 @@ public:
 	int Capacity() const;     // Number of seats
 
 	void Display() const;
-	/*void Display_All() const;*/
 
 	int Number_of_Seat_Rows() const
 	{

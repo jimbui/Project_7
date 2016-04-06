@@ -7,7 +7,8 @@
 #include "Seat_Section.h"
 using namespace std;
 
-New_Venue::New_Venue(const string& name_, const Address &address_) : name(name_), address(&address_), number_of_seat_rows(0), number_of_seat_sections(0)
+New_Venue::New_Venue(const string& name_, const Address &address_) : 
+	name(name_), address(&address_), number_of_seat_rows(0), number_of_seat_sections(0)
 {}
 
 void New_Venue::Add_Seat_Row(const Seat_Row* seat_row)
@@ -22,32 +23,17 @@ void New_Venue::Add_Seat_Section(const Seat_Section* seat_section)
 	seat_sec[number_of_seat_sections++] = seat_section;
 }
 
+
 void New_Venue::Display() const
 {
-	// Displays each seat row without row name
+	cout << name << endl;
+	address->Display();
+
+	for (int i = 0; i < number_of_seat_rows; i++)
+		seat_rows[i]->Display();
 }
 
 
-//void New_Venue::Display_All() const
-//{
-//	cout << name << endl;
-//	address->Display();
-//
-//	for (int i = 0; i < number_of_seat_rows; i++)
-//		seat_rows[i]->Display();
-//
-//	cout << endl << endl;
-//
-//	cout << "Seating sections:  " << endl;
-//
-//	for (int i = 0; i < number_of_seat_sections; i++)
-//	{
-//		seat_sec[i]->Display();
-//		cout << endl;
-//	}
-//}
-
-// Return number of seats
 int New_Venue::Capacity() const
 {
 	int count = 0;

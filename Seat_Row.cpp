@@ -33,14 +33,10 @@ void Seat_Row::Add_Seat(/*const*/ Seat* new_seat)
 
 void Seat_Row::Display() const
 {
-	cout << "Row " << row_name << " Seats " << "1-" << number_of_seats <<  endl;
-
-	//for (int i = 0; i < number_of_seats; ++i)
-	//{
-	//	//;
-	//	//cout << "\t";		// Indent the Seat description
-	//	//seats[i]->Display();
-	//}
+	for (int i = 0; i < number_of_seats; i++)
+	{
+		seats[i]->Display();
+	}
 }
 
 //void Seat_Row::Sort_Seats()const
