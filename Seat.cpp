@@ -16,3 +16,12 @@ void Seat::Display() const
 {
 	cout << "Row " << seat_row_name << " Seat " << seat_number << " Section " << seat_section_name;
 }
+
+bool Seat::operator>(const Seat& other) const
+{
+	if (this->seat_row_name == other.seat_row_name)
+	{
+		return this->seat_number > other.seat_number;
+	}
+	return this->seat_row_name > other.seat_row_name;
+}
