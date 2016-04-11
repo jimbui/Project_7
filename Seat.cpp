@@ -1,9 +1,12 @@
 #include <iostream>
 #include "Seat.h"
+#include "Seat_Row.h"
+#include "Seat_Section.h"
 
 using namespace std;
 
-Seat::Seat(string Row_Name, int Seat_Number, string Seat_Section_Name) :seat_row_name(Row_Name),seat_number(Seat_Number),seat_section_name(Seat_Section_Name)
+Seat::Seat(const Seat_Row* const Row, int Seat_Number, const Seat_Section* const Section) :
+	row(Row),seat_number(Seat_Number), section(Section)
 {}
 
 // Code for selling a seat
@@ -14,14 +17,14 @@ Seat::Seat(string Row_Name, int Seat_Number, string Seat_Section_Name) :seat_row
 
 void Seat::Display() const
 {
-	cout << "Row " << seat_row_name << " Seat " << seat_number << " Section " << seat_section_name;
+	cout << "Row " << row->Name() << " Seat " << seat_number << " Section " << section->Get_Name() << endl;
 }
 
 bool Seat::operator>(const Seat& other) const
 {
-	if (this->seat_row_name == other.seat_row_name)
+	if (this->row->Name() == other.row->Name())
 	{
 		return this->seat_number > other.seat_number;
 	}
-	return this->seat_row_name > other.seat_row_name;
+	return this->row->Name() > other.row->Name();
 }
