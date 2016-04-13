@@ -4,15 +4,18 @@
 #include "Seat_Row.h"
 using namespace std;
 
-Seat_Row::Seat_Row(const string& Row_Name, int Number_Of_Seats, const string& Section_Name) :
-	row_name(Row_Name),
-	number_of_seats(0)
-{
-	for (int i = 0; i < Number_Of_Seats; i++)
-	{
-		Add_Seat(new Seat(Row_Name, i + 1, Section_Name));
-	}
-}
+//Seat_Row::Seat_Row(const string& Row_Name, int Number_Of_Seats, const string& Section_Name) :
+//	row_name(Row_Name),
+//	number_of_seats(0)
+//{
+//	for (int i = 0; i < Number_Of_Seats; i++)
+//	{
+//		Add_Seat(new Seat(Row_Name, i + 1, Section_Name));
+//	}
+//}
+
+Seat_Row::Seat_Row(const string& Row_Name) : row_name(Row_Name), number_of_seats(0)
+{}
 
 bool Seat_Row::operator>(const Seat_Row& other) 
 {

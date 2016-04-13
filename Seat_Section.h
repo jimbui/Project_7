@@ -58,7 +58,7 @@ private:
 
 public:
 
-   string Get_Name(){return section_name; } ;
+   string Get_Name() const {return section_name; } ;
 
    string Get_Row_Element(int index) { return row_name[index]; };
    int Get_First_Seat_Element(int index) { return first_seat[index]; };

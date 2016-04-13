@@ -29,4 +29,3 @@ private:
 	// and assign seats accordingly
 	static Seat* Get_Seat(TiXmlNode* seat_node, Seat_Row* Current_Row, Seat_Section** Section_Array, int& seat_count, string& current_sec);
 };
-

@@ -2,36 +2,59 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+using namespace std ;
 
 // New Constructor --> This constructor initializes seat_count to 0.
-Seat_Section::Seat_Section(const string& Section_Name) :
+Seat_Section::Seat_Section(const string& Section_Name) : 
 	section_name(Section_Name), seat_count(0)
 {
 }
 
 // We may not need this constructor...
-Seat_Section::Seat_Section(const string Section_Name, string Row_Name[], int First_Seat[], int Last_Seat[], int rows)
+Seat_Section::Seat_Section(const string Section_Name, string Row_Name[], int First_Seat[], int Last_Seat[] , int rows) 
 {
-	section_name = Section_Name;
-	int i = 0;
-	row_count = 0;
-	int value;
-	string name;
-	while (i < rows)
-	{
-		name = Row_Name[i];
-		row_name[i] = name;
-		value = First_Seat[i];
-		first_seat[i] = value;
-		value = Last_Seat[i];
-		last_seat[i] = value;
-		i++;
-	}
+   section_name = Section_Name ;
+   int i = 0 ;
+   row_count=0;
+   int value;
+   string name;
+   while (i < rows)
+   {
+      name = Row_Name[i] ;
+      row_name[i] = name ;
+      value = First_Seat[i] ;
+      first_seat[i] = value ;
+      value = Last_Seat[i] ;
+      last_seat[i] = value ;
+      i++ ;
+   }
 
-	row_count = rows;
-};
+   row_count = rows ;
+} ;
 
+void Seat_Section::Display() const
+{
+   cout << "Section " << section_name << " \n" ;
+   int i = 0 ;
+   cout << " \n" ;
+   while (i < row_count)
+   {
+      cout << "Row " << row_name[i] << "       " << "Seats " << first_seat[i] << " - " << last_seat[i] << " \n" ;
+      i++ ;
+   }
+}
+
+void Seat_Section::Display_Row() const // modified version of Display().
+{
+   int i = 0;
+
+   while (i < row_count)
+   {
+      cout << "Row " << row_name[i] << "       " << "Seats " << first_seat[i] << " - " << last_seat[i] << " \n";
+      i++;
+   }
+   cout << " \n" ;
+}
 
 void Seat_Section::Display_Seats() const
 {
@@ -64,7 +87,7 @@ void Seat_Section::Add_Seats_From_Row(const Seat_Row& seat_row)
 	{
 		Seat* current_seat = seat_row.Get_Seat(i);
 
-		if (current_seat->SEAT_SECTION() == section_name)
+		if (current_seat->SEAT_SECTION()->Get_Name() == section_name)
 		{
 			seat[seat_count] = current_seat;
 			seat_count++;
@@ -100,15 +123,15 @@ void Seat_Section::Sort_Seats()
 
 		for (int i = 0; i < seat_count - 1; ++i)
 		{
-			// if (*seat[i] > *seat[i + 1]) --> The '<' operator is not implemented in seat class, so the coding has been written manually.
+			// if (*seat[i] < *seat[i + 1]) --> The '<' operator is not implemented in seat class, so the coding has been written manually.
 
 			// Used 'greater than' comparison to produce seats in ascending order
-			/*bool greater_than = false;
+			bool greater_than = false;
 
 			// Check seat row first
-			if (seat[i]->SEAT_NAME() > seat[i + 1]->SEAT_NAME())
+			if (seat[i]->SEAT_ROW()->Name() > seat[i + 1]->SEAT_ROW()->Name())
 				greater_than = true;
-			else if (seat[i]->SEAT_NAME() == seat[i + 1]->SEAT_NAME()) // Seats are in the same row
+			else if (seat[i]->SEAT_ROW()->Name() == seat[i + 1]->SEAT_ROW()->Name()) // Seats are in the same row
 			{
 				if (seat[i]->SEAT_NUM() > seat[i + 1]->SEAT_NUM())
 					greater_than = true;
@@ -116,9 +139,9 @@ void Seat_Section::Sort_Seats()
 				// The row name and number should *NEVER* be equal!
 			}
 			else
-				greater_than = false; */
+				greater_than = false;
 
-			if (*seat[i] > *seat[i + 1])
+			if (greater_than)
 			{
 				Swap_Seats(seat[i], seat[i + 1]);
 				swap_done = true;
@@ -126,4 +149,3 @@ void Seat_Section::Sort_Seats()
 		}
 	} while (swap_done);
 }
-

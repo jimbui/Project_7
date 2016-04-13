@@ -28,3 +28,5 @@ bool Seat::operator>(const Seat& other) const
 	}
 	return this->row->Name() > other.row->Name();
 }
+
+

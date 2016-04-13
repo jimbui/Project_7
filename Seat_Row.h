@@ -12,7 +12,8 @@ private:
 	int  number_of_seats;
 
 public:
-	Seat_Row(const string& Row_Name, int Number_Of_Seats, const string& Seat_Section);
+	/*Seat_Row(const string& Row_Name, int Number_Of_Seats, const string& Seat_Section);*/
+	Seat_Row(const string& Row_Name);
 	string Name() const { return row_name; };
 	void Add_Seat(/*const*/ Seat* new_seat);
 	void Display() const;
