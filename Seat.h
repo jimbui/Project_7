@@ -2,19 +2,24 @@
 #include <string>
 using namespace std;
 
+// Incomplete class definitions
+class Seat_Row;
+class Seat_Section;
+
 class Seat
 {
 private:
-	string seat_row_name;
-	string seat_section_name;
+	const Seat_Row* const row;
+	const Seat_Section* const section;
 	int seat_number;
 
 public:
-	Seat(string Row_Name, int Seat_Number, string Seat_Section_Name);
-	Seat() {};
+	Seat(const Seat_Row* const Row, int Seat_Number, const Seat_Section* const Section);
+	// Seat() {};
 
-	string SEAT_NAME() const { return seat_row_name; };
-	string SEAT_SECTION() const { return seat_section_name; };
+	const Seat_Row* SEAT_ROW() const { return row; };
+	const Seat_Section* SEAT_SECTION() const { return section; };
+
 	int SEAT_NUM() const { return seat_number; };
 	bool operator>(const Seat& other) const;
 
