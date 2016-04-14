@@ -14,7 +14,7 @@ Address* Venue_From_Xml::Get_Address(TiXmlNode* venue_node)
    string street_address = venue_node->FirstChild()->NextSibling()->FirstChild()->FirstChild()->Value() ; // value of street.
    string city = venue_node->FirstChild()->NextSibling()->FirstChild()->NextSibling()->FirstChild()->Value() ; // ^
    string state = venue_node->FirstChild()->NextSibling()->FirstChild()->NextSibling()->NextSibling()->FirstChild()->Value() ; // ^
-   int zip_code = atoi(venue_node->FirstChild()->NextSibling()->FirstChild()->NextSibling()->NextSibling()->NextSibling()->FirstChild()->Value()) ; // ^ , converts the string read in to an int.
+   int zip_code = std::stoi(venue_node->FirstChild()->NextSibling()->FirstChild()->NextSibling()->NextSibling()->NextSibling()->FirstChild()->Value()) ; // ^ , converts the string read in to an int.
 
    Address* adr = new Address(street_address , city , state , zip_code) ;
 
